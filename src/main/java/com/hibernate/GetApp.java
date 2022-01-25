@@ -15,9 +15,7 @@ public class GetApp {
                 .addAnnotatedClass(Course.class)
                 .buildSessionFactory();
 
-        Session session = factory.openSession();
-
-        try {
+        try (factory; Session session = factory.openSession()) {
 
             // get it by id 6
             session.beginTransaction();
@@ -34,10 +32,10 @@ public class GetApp {
 
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            session.close();
-            factory.close();
         }
+        
+        // close factory
+        factory.close();
 
     }
 }

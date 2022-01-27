@@ -33,7 +33,7 @@ public class GetApp {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         // close factory
         factory.close();
 
